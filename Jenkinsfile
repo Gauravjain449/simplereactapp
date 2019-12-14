@@ -24,6 +24,11 @@ pipeline {
                 sh 'npm run build'
             }
         } 
+         stage('Run Application') {
+            steps {
+                sh 'npm start'
+            }
+        } 
 
     }
 }
