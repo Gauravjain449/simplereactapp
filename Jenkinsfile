@@ -9,14 +9,19 @@ pipeline {
         CI= 'true'
     }
     stages {
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Unit Tests') {
             steps {
                 sh 'npm run test'
+            }
+        } 
+        stage('Create Build') {
+            steps {
+                sh 'npm run build'
             }
         } 
 
