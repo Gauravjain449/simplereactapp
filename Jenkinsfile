@@ -29,6 +29,7 @@ pipeline {
                   
                    steps {
                       sh 'npm run build'
+                      sh 'cd build'
                       sh 'ls'
                    }
                 }
