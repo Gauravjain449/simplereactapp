@@ -26,10 +26,7 @@ pipeline {
            parallel {
                stage('Build DEV') {
                   
-                   when {
-                      
-                       branch 'master'
-                   }
+                  
                    steps {
                        sh 'npm install'
                        sh 'npm run build'
@@ -37,10 +34,7 @@ pipeline {
                 }
                 stage('Build Staging') {
                    
-                    when {
-                      
-                        branch 'master'
-                    }
+                   
                     steps {
                         sh 'npm install'
                         sh 'npm run build'
