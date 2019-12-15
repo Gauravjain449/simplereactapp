@@ -24,22 +24,14 @@ pipeline {
         } 
         stage('Create Builds') {
            parallel {
-               stage('Build DEV') {
+               stage('Run Docker') {
                   
                   
                    steps {
-                       sh 'npm install'
-                       sh 'npm run build'
+                      sh 'npm run build'
                    }
                 }
-                stage('Build Staging') {
-                   
-                   
-                    steps {
-                        sh 'npm install'
-                        sh 'npm run build'
-                    }
-                }
+               
            
             }
         }
