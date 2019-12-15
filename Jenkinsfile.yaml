@@ -1,11 +1,18 @@
 agent: any
 
 stages:
+<<<<<<< HEAD
   stage:
     - name: 'Install Dependencies'
       agent: any
       steps:
         - sh: 'npm install'
+=======
+  - name: Install Dependencies
+    agent: any
+    steps:
+      - sh: npm install
+>>>>>>> 97465d0ca2d4e4b2bbdfe75c6ff2df30f35e0d25
       
 post:
   always:
