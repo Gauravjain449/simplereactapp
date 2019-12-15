@@ -1,5 +1,4 @@
 config:
-  dockerfile: .
   project_name: sample-app
 
 services:
