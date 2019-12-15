@@ -1,4 +1,4 @@
 steps:
-  # Shell script
+  
   - shell:
       script: "echo Build Number: $BUILD_NUMBER"
