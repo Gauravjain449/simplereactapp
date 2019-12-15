@@ -4,4 +4,4 @@ config:
 services:
   - docker
 steps:
-  - docker  version  
+  - 'docker version' 
