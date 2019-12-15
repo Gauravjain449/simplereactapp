@@ -1,29 +1,3 @@
-pipeline:
-    agent:
-       docker:
-            image: 'node:alpine'
-    
-    environment:
-        CI: 'true'
-    
-    stages:
-        stage: 'Install Dependencies' 
-            steps:
-              -  'npm install'
-            
-        
-        stage: 'Unit Tests' 
-            steps: 
-              - 'npm run test'
-            
-        
-        stage: 'Create Build'
-            steps: 
-              - 'npm run build'
-            
-         
-         stage: 'Run Application'
-            steps: 
-              - 'npm start'
-    
-
+sudo: required
+services:
+  - docker
