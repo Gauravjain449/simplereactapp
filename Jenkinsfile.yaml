@@ -1,6 +1,8 @@
-sudo: required
-services:
-  - docker
+agent: any
 
-  before_install:
-    - docker build -t gauravjain449/simple-app -f Dockerfile.dev .
+stages:
+    - name: First
+      agent: any
+      steps:
+        - sh: "npm install"
+
