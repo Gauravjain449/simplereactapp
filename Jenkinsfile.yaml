@@ -1,4 +1,5 @@
 steps:
-  install:
-  - 'sh: npm install'
+  step:
+    install:
+    - 'npm install'
 
