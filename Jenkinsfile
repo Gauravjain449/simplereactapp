@@ -24,9 +24,12 @@ pipeline {
                 sh 'npm run build'
             }
         } 
-         stage('Run Application') {
+        
+        stage('deploy') {
             steps {
-                sh 'npm start'
+                sh 'npm install'
+                sh 'npm run build'
+                
             }
         } 
 
