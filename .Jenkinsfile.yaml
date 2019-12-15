@@ -1,7 +1,4 @@
-config:
-  project_name: sample-app
-
-services:
-  - docker
 steps:
-  - 'docker version' 
+  # Shell script
+  - shell:
+      script: "echo Build Number: $BUILD_NUMBER"
