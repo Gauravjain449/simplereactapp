@@ -30,10 +30,6 @@ pipeline {
                            image 'node:alpine'
                        }
                    }
-                   when {
-                       beforeAgent true
-                       branch 'master'
-                   }
                    steps {
                        sh 'npm install'
                        sh 'npm run build'
@@ -45,10 +41,7 @@ pipeline {
                             image 'node:alpine'
                         }
                     }
-                    when {
-                        beforeAgent true
-                        branch 'master'
-                    }
+                   
                     steps {
                         sh 'npm install'
                         sh 'npm run build'
