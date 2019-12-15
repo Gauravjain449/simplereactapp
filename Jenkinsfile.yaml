@@ -1,10 +1,11 @@
 agent: any
 
 stages:
-  - name: 'Install Dependencies'
-    agent: any
-    steps:
-      - sh: 'npm install'
+  stage:
+    - name: 'Install Dependencies'
+      agent: any
+      steps:
+        - sh: 'npm install'
       
 post:
   always:
