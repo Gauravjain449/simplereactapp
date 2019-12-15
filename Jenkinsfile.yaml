@@ -1,3 +1,5 @@
+agent: any
+
 stages:
   - name: 'Install Dependencies'
     agent: any
