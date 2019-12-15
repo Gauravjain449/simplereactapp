@@ -25,10 +25,10 @@ pipeline {
         stage('Create Builds') {
            parallel {
                stage('Build DEV') {
-                   agent {
-                       docker {
-                           image 'node:alpine'
-                       }
+                  
+                   when {
+                      
+                       branch 'master'
                    }
                    steps {
                        sh 'npm install'
@@ -36,12 +36,11 @@ pipeline {
                    }
                 }
                 stage('Build Staging') {
-                    agent {
-                        docker {
-                            image 'node:alpine'
-                        }
-                    }
                    
+                    when {
+                      
+                        branch 'master'
+                    }
                     steps {
                         sh 'npm install'
                         sh 'npm run build'
