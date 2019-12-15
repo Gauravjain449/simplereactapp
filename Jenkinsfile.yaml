@@ -1,0 +1,9 @@
+stages:
+  - name: 'Install Dependencies'
+    agent: any
+    steps:
+      - sh: 'npm install'
+      
+post:
+  always:
+    - sh: 'echo hello!'
