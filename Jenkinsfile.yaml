@@ -1,4 +1,4 @@
 steps:
   install:
-  - 'npm install'
+  - sh: 'npm install'
 
