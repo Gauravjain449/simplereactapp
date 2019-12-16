@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t gauravjain449/simple-app  .
+  - docker build -t gauravjain449/simple-app -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true gauravjain449/simple-app npm run test
