@@ -12,10 +12,10 @@ pipelineConfig:
             unit: "HOURS"
         stages:
           stage: 
-            Install Dependencies:
+            Install_Dependencies:
               steps: 
                 sh: 'npm install'
           stage:
-           Unit Tests:
+           Unit_Tests:
             steps: 
               sh: 'npm run test'
