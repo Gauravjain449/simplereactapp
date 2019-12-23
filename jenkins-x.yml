@@ -3,5 +3,5 @@ pipelineConfig:
     release:
       build:
         steps:
-          - sh: ls
+          - step: "First Step"                  
           
