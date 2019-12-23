@@ -3,4 +3,4 @@ pipelineConfig:
     release:
       build:
         steps:
-          - command: "echo hello"
+          - command: echo hello
