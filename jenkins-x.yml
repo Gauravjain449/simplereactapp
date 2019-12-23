@@ -7,12 +7,14 @@ pipeline:
     timeout:
       time: 1
       unit: "HOURS"
-  stages:
-    stage: 
-      Install_Dependencies:
-        steps: 
-          - npm install
-    stage:
-      Unit_Tests:
-        steps: 
-          - npm run test
+  steps:
+    analysis:
+      - npm install      
+    setup_db:
+      - npm run test  
+    test:
+      - bundle exec rspec
+    security:
+      - bundle exec brakeman --exit-on-error
+    audit:
+      - bundle audit check --update
