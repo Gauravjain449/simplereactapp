@@ -12,3 +12,5 @@ pipelineConfig:
             unit: "HOURS"
         stages:
           stage: "Install Dependencies"
+            steps: 
+              sh: 'npm install'
