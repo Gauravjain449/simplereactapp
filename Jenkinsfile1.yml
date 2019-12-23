@@ -1,17 +1,6 @@
-settings:
-  stages: [build, test, deploy]
-
-app-build:
-  # Attach job to one stage of the CI pipeline
-  stage: build
-  script: make
-
-app-test:
-  stage: test
-  script: make test
-
-app-deploy:
-  stage: deploy
-  # Limit job on specific branch
-  branches: master
-  script: fab prod update
+pipelineConfig:
+  pipelines:
+    release:
+      build:
+        steps:
+          - command: ["echo hello"]
