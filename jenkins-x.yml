@@ -4,8 +4,9 @@ pipelineConfig:
       pipeline:
         agent:
           image: "node:alpine"
-        stages:
-          - steps:
-            - sh: 'npm install'
-        env:
-          - name: 'Test'
+        options:
+          timeout:
+            time: 1
+            unit: 'HOURS'
+               
+           
