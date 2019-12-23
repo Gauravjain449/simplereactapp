@@ -3,5 +3,5 @@ services:
   - docker
 
 before_install:
-  -echo "Gaurav Jain"
+  - echo "Gaurav Jain"
     
