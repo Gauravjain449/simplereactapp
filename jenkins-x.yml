@@ -7,3 +7,5 @@ pipelineConfig:
         stages:
           - steps:
             - sh: 'npm install'
+        env:
+          - name: 'Test'
