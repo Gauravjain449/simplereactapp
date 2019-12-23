@@ -1,5 +1,6 @@
 config:
-  dockerfile: ./Dockerfile.dev
+  dockerfile: Dockerfile.dev
+  context: .
   project_name: some-project-name
 
 sudo: required
