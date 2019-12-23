@@ -1,6 +1,6 @@
 pipeline:
   agent:
-    mage: "node:alpine"
+    image: "node:alpine"
   environment:
     CI: "true"
   options:
@@ -9,7 +9,7 @@ pipeline:
       unit: "HOURS"
   steps:
     analysis:
-      - bundle exec rubocop -R app spec --format simple
+      - npm install
       - bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser
     setup_db:
       - bundle exec rails db:create
