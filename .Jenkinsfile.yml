@@ -3,5 +3,5 @@ services:
   - docker
 
 before_install:
-  - echo "Gaurav Jain"
+  - docker build -t gauravjain449/react-test -f Dockerfile.dev .
     
