@@ -1,7 +1,6 @@
 pipelineConfig:
   pipelines:
     release:
-      build:
-        steps:
-          - step: "First Step"                  
-          
+      pipeline:
+        agent:
+          image: "node:alpine"
