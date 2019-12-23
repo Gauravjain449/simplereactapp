@@ -1,7 +1,9 @@
-sudo: required
-services: 
-  - docker
-
-before_install:
-  - docker build -t gauravjain449/react-test -f Dockerfile.dev .
-    
+{
+	"sudo": "required",
+	"services": [
+		"docker"
+	],
+	"before_install": [
+		"docker build -t gauravjain449/react-test -f Dockerfile.dev ."
+	]
+}
