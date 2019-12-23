@@ -5,7 +5,7 @@ pipelineConfig:
         agent:
           image: "node:alpine"
         environment:
-          - name: CI
+          - name: "CI"
           - value: "true"
         options:
           timeout:
