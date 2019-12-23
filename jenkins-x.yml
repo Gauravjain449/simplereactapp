@@ -4,9 +4,10 @@ pipelineConfig:
       pipeline:
         agent:
           image: "node:alpine"
+        environment:
+          - name: CI
+          - value: "true"
         options:
           timeout:
             time: 1
-            unit: 'HOURS'
-               
-           
+            unit: "HOURS"
