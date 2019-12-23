@@ -1,0 +1,11 @@
+config:
+  dockerfile: Dockerfile.dev
+  project_name: some-project-name
+
+sudo: required
+
+services:
+  - docker
+
+steps:
+  - ls
