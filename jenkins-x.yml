@@ -1,21 +1,18 @@
-pipelineConfig:
-  pipelines:
-    release:
-      pipeline:
-        agent:
-          image: "node:alpine"
-        environment:
-          CI: "true"
-        options:
-          timeout:
-            time: 1
-            unit: "HOURS"
-        stages:
-          stage: 
-            Install_Dependencies:
-              steps: 
-                sh: 'npm install'
-          stage:
-           Unit_Tests:
-            steps: 
-              sh: 'npm run test'
+pipeline:
+  agent:
+    mage: "node:alpine"
+  environment:
+    CI: "true"
+  options:
+    timeout:
+      time: 1
+      unit: "HOURS"
+  stages:
+    stage: 
+      Install_Dependencies:
+        steps: 
+          sh: 'npm install'
+    stage:
+      Unit_Tests:
+        steps: 
+          sh: 'npm run test'
