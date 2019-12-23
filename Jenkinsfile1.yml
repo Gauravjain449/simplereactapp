@@ -8,4 +8,5 @@ services:
   - docker
 
 steps:
-  - ls
+  analysis:
+    - ls
