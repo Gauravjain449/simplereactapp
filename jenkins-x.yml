@@ -9,9 +9,11 @@ pipeline:
       unit: "HOURS"
   steps:
     analysis:
-      - npm install      
+      - bundle exec rubocop -R app spec --format simple
+      - bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser
     setup_db:
-      - npm run test  
+      - bundle exec rails db:create
+      - bundle exec rails db:schema:load
     test:
       - bundle exec rspec
     security:
