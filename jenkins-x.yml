@@ -4,3 +4,6 @@ pipelineConfig:
       pipeline:
         agent:
           image: "node:alpine"
+        stages:
+          - steps:
+            - sh: 'npm install'
