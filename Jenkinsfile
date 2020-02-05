@@ -9,9 +9,9 @@ pipeline {
             }
         }
 
-        stage('Docker Hello World') {
+        stage('Docker build image') {
             steps {
-                sh 'docker run hello-world'
+                sh 'docker build -t gauravjain449/simple-app -f Dockerfile.dev .'
             }
         }
     }
