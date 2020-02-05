@@ -34,8 +34,8 @@ pipeline {
 
         stage('kubernetes deployment') {
             steps {
-                sh 'cd k8s'
-                sh 'kubectl apply -f .'
+                
+                sh 'kubectl apply -f k8s'
             }
         }
     }
