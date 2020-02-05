@@ -3,7 +3,7 @@ pipeline {
   
     environment {
           
-            PASSWORD = '$DOCKER_PASSWORD'
+            PASSWORD = $DOCKER_PASSWORD
     }
 
     stages {
