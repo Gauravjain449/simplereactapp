@@ -30,7 +30,7 @@ pipeline {
             steps {
               
                 
-                'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin'
+                echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin
                 sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
             }
         }
