@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    enviornment {
+
+    }
+
     stages {
         stage('Preparation'){
             steps {
@@ -11,7 +15,7 @@ pipeline {
 
         stage('Docker build image') {
             steps {
-                sh 'docker build -t gauravjain449/simple-app -f Dockerfile.dev .'
+                sh 'docker build -t ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} -f Dockerfile.dev .'
             }
         }
     }
