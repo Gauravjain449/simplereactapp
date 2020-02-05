@@ -1,10 +1,11 @@
 pipeline {
     agent any
   
-    // environment {
-          
-    //         PASSWORD = credentialsId: 'DOCKER_PASSWORD' 
-    // }
+    environment {
+    registry = "${DOCKER_HUB_USER_NAME}/simple-app"
+    registryCredential = 'DOCKER_PASSWORD'
+    dockerImage = ''
+    }
 
     stages {
         stage('Preparation'){
@@ -16,7 +17,9 @@ pipeline {
 
         stage('Docker build image') {
             steps {
-                sh 'docker build -t ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} -f Dockerfile.dev .'
+                script {
+                dockerImage = docker.build -t registry + ':${BUILD_ID} -f Dockerfile.dev .'
+                }
             }
         }
 
@@ -28,11 +31,11 @@ pipeline {
 
          stage('Docker image push') {
             steps {
-              
-                sh 'echo $DOCKER_PASSWORD'
-                sh 'echo "$DOCKER_HUB_USER_NAME"'
-                sh 'docker login -u "$DOCKER_HUB_USER_NAME" -p  "$DOCKER_PASSWORD" '
-                sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
+                 script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
             }
         }
     }
