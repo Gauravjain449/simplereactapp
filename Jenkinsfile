@@ -3,7 +3,7 @@ pipeline {
     environment {
     
      
-     DOCKER_PASSWORD = "india@123"
+     DOCKER_PASSWORD = credentialsId: 'DOCKER_PASSWORD'
     
     }
    
