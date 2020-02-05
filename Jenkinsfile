@@ -2,7 +2,7 @@ pipeline {
     agent any
   
     environment {
-    registry = "${DOCKER_HUB_USER_NAME}/simple-app"
+    registry = "gauravjain449/simple-app"
     registryCredential = 'DOCKER_PASSWORD'
     dockerImage = ''
     }
