@@ -1,7 +1,11 @@
 pipeline {
     agent any
   
-   
+    // environment {
+          
+    //         PASSWORD = credentials('DOCKER_PASSWORD')
+    // }
+
     stages {
         stage('Preparation'){
             steps {
@@ -25,7 +29,7 @@ pipeline {
          stage('Docker image push') {
             steps {
               
-                sh 'echo "DOCKER_PASSWORD"'
+                sh "echo credentials('DOCKER_PASSWORD')"
                 sh 'echo "$DOCKER_HUB_USER_NAME"'
                 // sh 'echo "$PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin'
                 // sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
