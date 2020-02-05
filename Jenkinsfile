@@ -1,11 +1,6 @@
 pipeline {
     agent any
-    environment {
-    
-     
-     DOCKER_PASSWORD = credentialsId: 'DOCKER_PASSWORD'
-    
-    }
+   
    
     stages {
         stage('Preparation'){
