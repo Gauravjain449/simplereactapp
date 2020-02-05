@@ -3,7 +3,7 @@ pipeline {
   
     environment {
           
-            PASSWORD = credentials('india@123')
+            PASSWORD = credentials('DOCKER_PASSWORD')
     }
 
     stages {
