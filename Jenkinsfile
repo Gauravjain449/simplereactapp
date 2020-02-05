@@ -1,6 +1,8 @@
 pipeline {
     agent any
-  
+    environment {
+       registryCredential = 'DOCKER_PASSWORD'
+    } 
    
     stages {
         stage('Preparation'){
@@ -24,7 +26,7 @@ pipeline {
 
          stage('Docker image push') {
             steps {
-                sh "docker login -u ${DOCKER_HUB_USER_NAME} -p ${DOCKER_PASSWORD}"
+                sh "docker login -u ${DOCKER_HUB_USER_NAME} -p ${registryCredential}"
                 sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
             }
         }
