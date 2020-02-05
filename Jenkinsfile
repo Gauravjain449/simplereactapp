@@ -15,5 +15,11 @@ pipeline {
                 sh 'docker build -t ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} -f Dockerfile.dev .'
             }
         }
+
+         stage('Docker image test') {
+            steps {
+                sh 'docker run -e CI=true ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} npm run test'
+            }
+        }
     }
 }
