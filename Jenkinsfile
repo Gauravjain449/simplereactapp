@@ -26,7 +26,7 @@ pipeline {
 
          stage('Docker image push') {
             steps {
-                sh "docker login -u ${DOCKER_HUB_USER_NAME} -p 'registryCredential'"
+                sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin'
                 sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
             }
         }
