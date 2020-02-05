@@ -2,8 +2,7 @@ pipeline {
     agent any
   
     environment {
-          
-            PASSWORD = credentials('DOCKER_PASSWORD')
+        PASSWORD = credentials('DOCKER_PASSWORD')
     }
 
     stages {
@@ -20,18 +19,22 @@ pipeline {
             }
         }
 
-         stage('Docker image test') {
+        stage('Docker image test') {
             steps {
                 sh 'docker run -e CI=true ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} npm run test'
             }
         }
 
-         stage('Docker image push') {
+        stage('Docker image push') {
             steps {
-              
-                
                 sh 'echo "${PASSWORD}" | docker login -u "${DOCKER_HUB_USER_NAME}" --password-stdin'
                 sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
+            }
+        }
+
+        stage('Docker image delete') {
+            steps {
+                sh 'docker rmi ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
             }
         }
     }
