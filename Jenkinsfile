@@ -31,7 +31,7 @@ pipeline {
               
                 sh 'echo $DOCKER_PASSWORD'
                 sh 'echo "$DOCKER_HUB_USER_NAME"'
-                sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin'
+                sh 'docker login -u "$DOCKER_HUB_USER_NAME" -p  "$DOCKER_PASSWORD" '
                 sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
             }
         }
