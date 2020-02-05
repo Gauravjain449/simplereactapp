@@ -3,6 +3,7 @@ pipeline {
   
     environment {
         PASSWORD = credentials('DOCKER_PASSWORD')
+        REPOSITORY_TAG="${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}"
     }
 
     stages {
@@ -15,22 +16,22 @@ pipeline {
 
         stage('Docker build image') {
             steps {
-                sh 'docker build -t ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} -f Dockerfile.dev .'
+                sh 'docker build -t ${REPOSITORY_TAG} -f Dockerfile.dev .'
             }
         }
 
         stage('Docker image test') {
             steps {
-                sh 'docker run -e CI=true ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} npm run test'
+                sh 'docker run -e CI=true ${REPOSITORY_TAG} npm run test'
             }
         }
 
-        // stage('Docker image push') {
-        //     steps {
-        //         sh 'echo "${PASSWORD}" | docker login -u "${DOCKER_HUB_USER_NAME}" --password-stdin'
-        //         sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
-        //     }
-        // }
+        stage('Docker image push') {
+            steps {
+                sh 'echo "${PASSWORD}" | docker login -u "${DOCKER_HUB_USER_NAME}" --password-stdin'
+                sh 'docker push ${REPOSITORY_TAG}'
+            }
+        }
 
         stage('kubernetes deployment') {
             steps {
