@@ -32,9 +32,10 @@ pipeline {
             }
         }
 
-        stage('Docker image delete') {
+        stage('kubernetes deployment') {
             steps {
-                sh 'docker rmi ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
+                sh 'cd k8s'
+                sh 'kubectl apply -f .'
             }
         }
     }
