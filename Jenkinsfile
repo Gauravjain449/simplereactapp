@@ -35,7 +35,7 @@ pipeline {
 
         stage('kubernetes deployment') {
             steps {
-                
+                sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl delete -f -'
                 sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
             }
         }
