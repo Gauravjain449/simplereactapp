@@ -21,5 +21,11 @@ pipeline {
                 sh 'docker run -e CI=true ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID} npm run test'
             }
         }
+
+         stage('Docker image push') {
+            steps {
+                sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
+            }
+        }
     }
 }
