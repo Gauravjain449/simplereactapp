@@ -3,7 +3,7 @@ pipeline {
   
     environment {
           
-            PASSWORD = $DOCKER_PASSWORD
+            PASSWORD = credentialsId: 'DOCKER_PASSWORD' 
     }
 
     stages {
