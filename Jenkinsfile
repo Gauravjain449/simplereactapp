@@ -9,9 +9,9 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Docker Hello World') {
             steps {
-                sh 'npm install'
+                sh 'docker run hello-world'
             }
         }
     }
