@@ -25,12 +25,12 @@ pipeline {
             }
         }
 
-        stage('Docker image push') {
-            steps {
-                sh 'echo "${PASSWORD}" | docker login -u "${DOCKER_HUB_USER_NAME}" --password-stdin'
-                sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
-            }
-        }
+        // stage('Docker image push') {
+        //     steps {
+        //         sh 'echo "${PASSWORD}" | docker login -u "${DOCKER_HUB_USER_NAME}" --password-stdin'
+        //         sh 'docker push ${DOCKER_HUB_USER_NAME}/simple-app:${BUILD_ID}'
+        //     }
+        // }
 
         stage('kubernetes deployment') {
             steps {
