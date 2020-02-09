@@ -49,7 +49,7 @@ pipeline {
             branch 'master'
           }
           steps {
-            withAWS(region:'<your-bucket-region>',credentials:"${AWS-Staging-Jenkins-Credential-ID}") {
+            withAWS(region:'ap-south-1',credentials:"${AWS-Staging-Jenkins-Credential-ID}") {
               s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
               s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
             }
