@@ -41,7 +41,7 @@ pipeline {
               s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
               s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
             }
-            mail(subject: 'Staging Build', body: 'New Deployment to Staging', to: 'g9717811255@gmail.com')
+            //mail(subject: 'Staging Build', body: 'New Deployment to Staging', to: 'g9717811255@gmail.com')
           }
         }
         stage('Production') {
@@ -53,7 +53,7 @@ pipeline {
               s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
               s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
             }
-            mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'jain_gaur@hotmail.com')
+            //mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'jain_gaur@hotmail.com')
           }
         }
           }
