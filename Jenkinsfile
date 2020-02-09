@@ -30,33 +30,33 @@ pipeline {
      }
       }
     }
-    // stage('Deployment') {
-    //   parallel {
-    //     stage('Staging') {
-    //       when {
-    //         branch 'staging'
-    //       }
-    //       steps {
-    //         withAWS(region:'<your-bucket-region>',credentials:'<AWS-Staging-Jenkins-Credential-ID>') {
-    //           s3Delete(bucket: '<bucket-name>', path:'**/*')
-    //           s3Upload(bucket: '<bucket-name>', workingDir:'build', includePathPattern:'**/*');
-    //         }
-    //         mail(subject: 'Staging Build', body: 'New Deployment to Staging', to: 'jenkins-mailing-list@mail.com')
-    //       }
-    //     }
-    //     stage('Production') {
-    //       when {
-    //         branch 'master'
-    //       }
-    //       steps {
-    //         withAWS(region:'<your-bucket-region>',credentials:'<AWS-Production-Jenkins-Credential-ID>') {
-    //           s3Delete(bucket: '<bucket-name>', path:'**/*')
-    //           s3Upload(bucket: '<bucket-name>', workingDir:'build', includePathPattern:'**/*');
-    //         }
-    //         mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'jenkins-mailing-list@mail.com')
-    //       }
-    //     }
-    //       }
-    // }
+    stage('Deployment') {
+      parallel {
+        stage('Staging') {
+          when {
+            branch 'staging'
+          }
+          steps {
+            withAWS(region:'ap-south-1',credentials:${AWS-Staging-Jenkins-Credential-ID}) {
+              s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
+              s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
+            }
+            mail(subject: 'Staging Build', body: 'New Deployment to Staging', to: 'g9717811255@gmail.com')
+          }
+        }
+        stage('Production') {
+          when {
+            branch 'master'
+          }
+          steps {
+            withAWS(region:'<your-bucket-region>',credentials:${AWS-Staging-Jenkins-Credential-ID}) {
+              s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
+              s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
+            }
+            mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'jain_gaur@hotmail.com')
+          }
+        }
+          }
+    }
   }
 }
