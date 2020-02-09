@@ -37,7 +37,7 @@ pipeline {
             branch 'staging'
           }
           steps {
-            withAWS(region:'ap-south-1',credentials:"${Jenkins-Credential-ID-AWS}") {
+            withAWS(region:'ap-south-1',credentials:"${JenkinsCredentialIDAWS}") {
               s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
               s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
             }
@@ -49,7 +49,7 @@ pipeline {
             branch 'master'
           }
           steps {
-            withAWS(region:'ap-south-1',credentials:"${Jenkins-Credential-ID-AWS}") {
+            withAWS(region:'ap-south-1',credentials:"${JenkinsCredentialIDAWS}") {
               s3Delete(bucket: 'elasticbeanstalk-ap-south-1-852513569089', path:'**/*')
               s3Upload(bucket: 'elasticbeanstalk-ap-south-1-852513569089', workingDir:'build', includePathPattern:'**/*');
             }
